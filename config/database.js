@@ -32,12 +32,12 @@ module.exports = ({ env }) => {
 		development: {
 			mysql: {
 				connection: {
-					connectionString: env('DATABASE_URL', '127.0.0.1'),
-					host: env('DATABASE_HOST', 'localhost'),
-					port: env.int('DATABASE_PORT', 3306),
-					database: env('DATABASE_NAME', 'mydb-db'),
-					user: env('DATABASE_USERNAME', 'root'),
-					password: env('DATABASE_PASSWORD', '123qwe'),
+					connectionString: env('DATABASE_URL'),
+					host: env('DATABASE_HOST'),
+					port: env.int('DATABASE_PORT'),
+					database: env('DATABASE_NAME'),
+					user: env('DATABASE_USERNAME'),
+					password: env('DATABASE_PASSWORD'),
 					ssl: env.bool('DATABASE_SSL', false) && {
 						key: env('DATABASE_SSL_KEY', undefined),
 						cert: env('DATABASE_SSL_CERT', undefined),

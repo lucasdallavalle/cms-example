@@ -1,0 +1,51 @@
+version: "3"
+services:
+  strapi:
+    container_name: strapi
+    build: .
+    image: strapi:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      APP_KEYS: ${APP_KEYS}
+      NODE_ENV: ${NODE_ENV}
+    volumes:
+      - ./config:/usr/src/app/config
+      - ./src:/usr/src/app/src
+      - ./package.json:/usr/src/app/package.json
+      - ./yarn.lock:/usr/src/app/yarn.lock
+      - ./.env:/usr/src/app/.env
+      - ./public/uploads:/usr/src/app/public/uploads
+    ports:
+      - "1337:1337"
+    networks:
+      - strapi
+    depends_on:
+      - cms-db
+  cms-db:
+    container_name: cms-db
+    platform: linux/amd64 #for platform error on Apple M1 chips
+    restart: unless-stopped
+    env_file: .env
+    image: mysql:8.4.0
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_USER: ${DATABASE_USERNAME}
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+    volumes:
+      - strapi-data:/var/lib/mysql
+      #- ./data:/var/lib/mysql # if you want to use a bind folder
+    ports:
+      - "3306:3306"
+    networks:
+      - strapi
+volumes:
+  strapi-data:upload-cms-example
+networks:
+  strapi:
+    name: Strapi
+    driver: bridge
