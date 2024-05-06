@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "categorias",
+  "info": {
+    "singularName": "categoria",
+    "pluralName": "categorias",
+    "displayName": "Categorias",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Categorias": {
+      "type": "component",
+      "repeatable": true,
+      "component": "produtos.categorias"
+    }
+  }
+}

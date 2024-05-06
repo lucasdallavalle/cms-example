@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_produtos_categorias",
+  "info": {
+    "displayName": "Categorias",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "Codigo": {
+      "type": "string",
+      "regex": "[^-\\s]",
+      "required": true
+    },
+    "Nome": {
+      "type": "text",
+      "required": true,
+      "unique": true
+    },
+    "Ativo": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    }
+  }
+}

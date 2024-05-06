@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_produtos_produtos",
+  "info": {
+    "displayName": "Produtos",
+    "icon": "shirt"
+  },
+  "options": {},
+  "attributes": {
+    "GTIN": {
+      "type": "string"
+    },
+    "Nome": {
+      "type": "text",
+      "required": true,
+      "minLength": 2
+    },
+    "Imagens": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    },
+    "Ativo": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "Descricao": {
+      "type": "blocks",
+      "required": false
+    }
+  }
+}
